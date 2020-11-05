@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private Vector2 movement;
 
     public Rigidbody2D rb;
+    public SpriteRenderer sr; 
 
     // Update is called once per frame
     void Update()
@@ -19,6 +20,14 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (movement.x < 0)
+        {
+            sr.flipX = true;
+        } else if (movement.x > 0)
+        {
+            sr.flipX = false;
+        }
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }

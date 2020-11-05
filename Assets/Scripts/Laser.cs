@@ -4,78 +4,7 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-
-    /* private LineRenderer lineRenderer;
-    private int maxLenght = 100;
-    private int maxReflections = 5;
-    private int countLaser = 1;
-
-    private Vector3 pos = new Vector3();
-    private Vector3 dir = new Vector3();
-
-    private bool isActive = true;
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
-
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            DrawLaser();
-        }
-    }
-
-    private void DrawLaser()
-    {
-        lineRenderer.positionCount = 0;
-
-        isActive = true;
-        pos = transform.position;
-        dir = Camera.main.WorldToScreenPoint(Input.mousePosition) - pos;
-
-        lineRenderer.positionCount = countLaser;
-        lineRenderer.SetPosition(0, pos);
-
-        while (isActive)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(pos, dir, maxLenght);
-
-            if (hit && !hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Laser"))
-            {
-
-                Debug.Log("We hit: " + hit.collider.tag);
-
-                countLaser++;
-
-                lineRenderer.positionCount = countLaser;
-
-                dir = Vector2.Reflect(dir, hit.normal);
-                pos = hit.point;
-
-                lineRenderer.SetPosition(countLaser - 1, pos);
-            } else
-            {
-                countLaser++;
-
-                lineRenderer.positionCount = countLaser;
-                lineRenderer.SetPosition(countLaser - 1, pos + (dir.normalized * maxLenght));
-
-                isActive = false;
-            }
-
-            if (countLaser > maxReflections)
-            {
-                isActive = false;
-            }
-        }
-    } */
-
-    private const int Infinity = 999;
+    /* private const int Infinity = 999;
 
     private int maxReflections = 10;
     private int currentReflections = 0;
@@ -86,7 +15,7 @@ public class Laser : MonoBehaviour
     private int defaultRayDistance = 100;
     private LineRenderer lr;
 
-    public Transform t; 
+    public Transform t;
 
     // Use this for initialization
     void Start()
@@ -140,5 +69,23 @@ public class Laser : MonoBehaviour
         {
             Points.Add(hitData.point + newDirection * defaultRayDistance);
         }
+    } */
+
+    private void Start()
+    {
+        Debug.Log(this.gameObject.transform.position);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Shoot();
+        }
+    }
+
+    private void Shoot()
+    {
+        Debug.Log(this.gameObject.transform.position);
     }
 }
